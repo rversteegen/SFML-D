@@ -1,6 +1,6 @@
 module sf.system;
 import std.math : sqrt;
-pragma(lib, "csfml-system-2");
+pragma(lib, "csfml-system");
 
 class Clock {
     private sfClock* ptr;

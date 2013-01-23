@@ -1,7 +1,7 @@
 module sf.window;
 public import sf.system : Vector2i, Vector2u;
 
-pragma(lib, "csfml-window-2");
+pragma(lib, "csfml-window");
 
 class Context {
     private sfContext* ptr;

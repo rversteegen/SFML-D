@@ -1,7 +1,7 @@
 module sf.graphics;
 public import sf.system : Vector2f, Vector3f, sfInputStream;
 public import sf.window;
-pragma(lib, "csfml-graphics-2");
+pragma(lib, "csfml-graphics");
 
 
 
