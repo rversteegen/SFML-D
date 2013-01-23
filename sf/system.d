@@ -5,10 +5,9 @@ pragma(lib, "csfml-system-2");
 class Clock {
     private sfClock* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Clock)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfClock* ptr) {
         this.ptr = ptr; 
@@ -35,10 +34,9 @@ class Clock {
 class Mutex {
     private sfMutex* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Mutex)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfMutex* ptr) {
         this.ptr = ptr; 
@@ -64,10 +62,9 @@ class Thread {
 	
     private sfThread* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Thread)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfThread* ptr) {
         this.ptr = ptr; 
@@ -164,7 +161,7 @@ struct Vector2f
 
 private extern(C):
 
-Time sfTime_Zero;
+extern Time sfTime_Zero;
 float  sfTime_asSeconds(Time time);
 int  sfTime_asMilliseconds(Time time);
 long  sfTime_asMicroseconds(Time time);

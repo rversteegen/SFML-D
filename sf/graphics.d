@@ -8,10 +8,9 @@ pragma(lib, "csfml-graphics-2");
 class CircleShape {
     private sfCircleShape* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(CircleShape)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfCircleShape* ptr) {
         this.ptr = ptr; 
@@ -122,10 +121,9 @@ class CircleShape {
 class Texture {
     private sfTexture* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Texture)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfTexture* ptr) {
         this.ptr = ptr; 
@@ -194,10 +192,9 @@ class Texture {
 class ConvexShape {
     private sfConvexShape* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(ConvexShape)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfConvexShape* ptr) {
         this.ptr = ptr; 
@@ -305,10 +302,9 @@ class ConvexShape {
 class Font {
     private sfFont* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Font)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfFont* ptr) {
         this.ptr = ptr; 
@@ -347,10 +343,9 @@ class Font {
 class Image {
     private sfImage* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Image)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfImage* ptr) {
         this.ptr = ptr; 
@@ -413,10 +408,9 @@ class Image {
 class RectangleShape {
     private sfRectangleShape* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(RectangleShape)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfRectangleShape* ptr) {
         this.ptr = ptr; 
@@ -524,10 +518,9 @@ class RectangleShape {
 class Shader {
     private sfShader* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Shader)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfShader* ptr) {
         this.ptr = ptr; 
@@ -578,9 +571,6 @@ class Shader {
 	void bind() {
 		sfShader_bind(ptr);
 	}
-	void unbind() {
-		sfShader_unbind(ptr);
-	}
 	static bool isAvailable() {
 		return sfShader_isAvailable();
 	}
@@ -590,10 +580,9 @@ class Shader {
 class RenderWindow {
     private sfRenderWindow* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(RenderWindow)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfRenderWindow* ptr) {
         this.ptr = ptr; 
@@ -654,7 +643,7 @@ class RenderWindow {
 		sfRenderWindow_setKeyRepeatEnabled(ptr,enabled); return enabled;
 	}
 	bool  active(bool active) {
-		return sfRenderWindow_setActive(ptr,active); return active;
+		return sfRenderWindow_setActive(ptr,active);
 	}
 	void display() {
 		sfRenderWindow_display(ptr);
@@ -683,8 +672,11 @@ class RenderWindow {
 	IntRect viewport(View view) {
 		return sfRenderWindow_getViewport(ptr,view);
 	}
-	Vector2f convertCoords(Vector2i point,View targetView) {
-		return sfRenderWindow_convertCoords(ptr,point,targetView);
+	Vector2f mapPixelToCoords(Vector2i point,View view) {
+		return sfRenderWindow_mapPixelToCoords(ptr,point,view);
+	}
+	Vector2i mapCoordsToPixel(Vector2f point,View view) {
+		return sfRenderWindow_mapCoordsToPixel(ptr,point,view);
 	}
 	void draw(Sprite object,RenderStates *states) {
 		sfRenderWindow_drawSprite(ptr,object,states);
@@ -728,10 +720,9 @@ class RenderWindow {
 class View {
     private sfView* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(View)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfView* ptr) {
         this.ptr = ptr; 
@@ -791,10 +782,9 @@ class View {
 class Sprite {
     private sfSprite* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Sprite)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfSprite* ptr) {
         this.ptr = ptr; 
@@ -848,7 +838,7 @@ class Sprite {
 	Transform inverseTransform() {
 		return sfSprite_getInverseTransform(ptr);
 	}
-	  Texture texture(Texture texture,bool resetRect=false) {
+	Texture texture(Texture texture,bool resetRect=false) {
 		sfSprite_setTexture(ptr,texture,resetRect); return texture;
 	}
 	IntRect textureRect(IntRect rectangle) {
@@ -878,10 +868,9 @@ class Sprite {
 class Text {
     private sfText* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Text)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfText* ptr) {
         this.ptr = ptr; 
@@ -986,10 +975,9 @@ class Text {
 class Shape {
     private sfShape* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Shape)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfShape* ptr) {
         this.ptr = ptr; 
@@ -1091,10 +1079,9 @@ class Shape {
 class VertexArray {
     private sfVertexArray* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(VertexArray)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfVertexArray* ptr) {
         this.ptr = ptr; 
@@ -1139,10 +1126,9 @@ class VertexArray {
 class RenderTexture {
     private sfRenderTexture* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(RenderTexture)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfRenderTexture* ptr) {
         this.ptr = ptr; 
@@ -1158,7 +1144,7 @@ class RenderTexture {
 		return sfRenderTexture_getSize(ptr);
 	}
 	bool  active(bool active) {
-		return sfRenderTexture_setActive(ptr,active); return active;
+		return sfRenderTexture_setActive(ptr,active);
 	}
 	void display() {
 		sfRenderTexture_display(ptr);
@@ -1178,8 +1164,11 @@ class RenderTexture {
 	IntRect viewport(View view) {
 		return sfRenderTexture_getViewport(ptr,view);
 	}
-	Vector2f convertCoords(Vector2i point,View targetView) {
-		return sfRenderTexture_convertCoords(ptr,point,targetView);
+	Vector2f mapPixelToCoords(Vector2i point,View view) {
+		return sfRenderTexture_mapPixelToCoords(ptr,point,view);
+	}
+	Vector2i mapCoordsToPixel(Vector2f point,View view) {
+		return sfRenderTexture_mapCoordsToPixel(ptr,point,view);
 	}
 	void drawSprite(Sprite object,RenderStates *states) {
 		sfRenderTexture_drawSprite(ptr,object,states);
@@ -1229,10 +1218,9 @@ class RenderTexture {
 class Transformable {
     private sfTransformable* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Transformable)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfTransformable* ptr) {
         this.ptr = ptr; 
@@ -1597,7 +1585,8 @@ void  sfRenderWindow_setView(sfRenderWindow *renderWindow, sfView *view);
 sfView * sfRenderWindow_getView(sfRenderWindow *renderWindow);
 sfView * sfRenderWindow_getDefaultView(sfRenderWindow *renderWindow);
 IntRect  sfRenderWindow_getViewport(sfRenderWindow *renderWindow, sfView *view);
-Vector2f  sfRenderWindow_convertCoords(sfRenderWindow *renderWindow, Vector2i point, sfView *targetView);
+Vector2f sfRenderWindow_mapPixelToCoords(sfRenderWindow* renderWindow, Vector2i point, sfView* view);	
+Vector2i sfRenderWindow_mapCoordsToPixel(sfRenderWindow* renderWindow, Vector2f point, sfView* view);
 void  sfRenderWindow_drawSprite(sfRenderWindow *renderWindow, sfSprite *object, RenderStates *states);
 void  sfRenderWindow_drawText(sfRenderWindow *renderWindow, sfText *object, RenderStates *states);
 void  sfRenderWindow_drawShape(sfRenderWindow *renderWindow, sfShape *object, RenderStates *states);
@@ -1622,7 +1611,8 @@ void  sfRenderTexture_setView(sfRenderTexture *renderTexture, sfView *view);
 sfView * sfRenderTexture_getView(sfRenderTexture *renderTexture);
 sfView * sfRenderTexture_getDefaultView(sfRenderTexture *renderTexture);
 IntRect  sfRenderTexture_getViewport(sfRenderTexture *renderTexture, sfView *view);
-Vector2f  sfRenderTexture_convertCoords(sfRenderTexture *renderTexture, Vector2i point, sfView *targetView);
+Vector2f sfRenderTexture_mapPixelToCoords(sfRenderTexture* renderTexture, Vector2i point, sfView* view);	
+Vector2i sfRenderTexture_mapCoordsToPixel(sfRenderTexture* renderTexture, Vector2f point, sfView* view);
 void  sfRenderTexture_drawSprite(sfRenderTexture *renderTexture, sfSprite *object, RenderStates *states);
 void  sfRenderTexture_drawText(sfRenderTexture *renderTexture, sfText *object, RenderStates *states);
 void  sfRenderTexture_drawShape(sfRenderTexture *renderTexture, sfShape *object, RenderStates *states);
@@ -1652,7 +1642,6 @@ void  sfShader_setTransformParameter(sfShader *shader, const (char) *name, Trans
 void  sfShader_setTextureParameter(sfShader *shader, const (char) *name, sfTexture *texture);
 void  sfShader_setCurrentTextureParameter(sfShader *shader, const (char) *name);
 void  sfShader_bind(sfShader *shader);
-void  sfShader_unbind(sfShader *shader);
 bool   sfShader_isAvailable();
 alias uint  function(void *)sfShapeGetPointCountCallback;
 alias Vector2f  function(uint , void *)sfShapeGetPointCallback;

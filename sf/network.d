@@ -5,10 +5,9 @@ pragma(lib, "csfml-network-2");
 class FtpListingResponse {
     private sfFtpListingResponse* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(FtpListingResponse)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfFtpListingResponse* ptr) {
         this.ptr = ptr; 
@@ -29,8 +28,8 @@ class FtpListingResponse {
 	int count() {
 		return sfFtpListingResponse_getCount(ptr);
 	}
-	const(char)* filename(int index) {
-		return sfFtpListingResponse_getFilename(ptr,index);
+	const(char)* name(int index) {
+		return sfFtpListingResponse_getName(ptr,index);
 	}
 }
 
@@ -38,10 +37,9 @@ class FtpListingResponse {
 class FtpDirectoryResponse {
     private sfFtpDirectoryResponse* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(FtpDirectoryResponse)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfFtpDirectoryResponse* ptr) {
         this.ptr = ptr; 
@@ -68,10 +66,9 @@ class FtpDirectoryResponse {
 class FtpResponse {
     private sfFtpResponse* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(FtpResponse)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfFtpResponse* ptr) {
         this.ptr = ptr; 
@@ -95,10 +92,9 @@ class FtpResponse {
 class Ftp {
     private sfFtp* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Ftp)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfFtp* ptr) {
         this.ptr = ptr; 
@@ -161,10 +157,9 @@ class Ftp {
 class HttpRequest {
     private sfHttpRequest* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(HttpRequest)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfHttpRequest* ptr) {
         this.ptr = ptr; 
@@ -197,10 +192,9 @@ class HttpRequest {
 class HttpResponse {
     private sfHttpResponse* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(HttpResponse)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfHttpResponse* ptr) {
         this.ptr = ptr; 
@@ -230,10 +224,9 @@ class HttpResponse {
 class Http {
     private sfHttp* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Http)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfHttp* ptr) {
         this.ptr = ptr; 
@@ -257,10 +250,9 @@ class Http {
 class Packet {
     private sfPacket* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Packet)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfPacket* ptr) {
         this.ptr = ptr; 
@@ -359,10 +351,9 @@ class Packet {
 class SocketSelector {
     private sfSocketSelector* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(SocketSelector)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfSocketSelector* ptr) {
         this.ptr = ptr; 
@@ -416,10 +407,9 @@ class SocketSelector {
 class TcpListener {
     private sfTcpListener* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(TcpListener)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfTcpListener* ptr) {
         this.ptr = ptr; 
@@ -452,10 +442,9 @@ class TcpListener {
 class TcpSocket {
     private sfTcpSocket* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(TcpSocket)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfTcpSocket* ptr) {
         this.ptr = ptr; 
@@ -506,10 +495,9 @@ class TcpSocket {
 class UdpSocket {
     private sfUdpSocket* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(UdpSocket)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfUdpSocket* ptr) {
         this.ptr = ptr; 
@@ -670,7 +658,7 @@ bool   sfFtpListingResponse_isOk(sfFtpListingResponse *ftpListingResponse);
 FtpStatus  sfFtpListingResponse_getStatus(sfFtpListingResponse *ftpListingResponse);
 const (char) * sfFtpListingResponse_getMessage(sfFtpListingResponse *ftpListingResponse);
 int  sfFtpListingResponse_getCount(sfFtpListingResponse *ftpListingResponse);
-const (char) * sfFtpListingResponse_getFilename(sfFtpListingResponse *ftpListingResponse, int index);
+const (char) * sfFtpListingResponse_getName(sfFtpListingResponse *ftpListingResponse, int index);
 void  sfFtpDirectoryResponse_destroy(sfFtpDirectoryResponse *ftpDirectoryResponse);
 bool   sfFtpDirectoryResponse_isOk(sfFtpDirectoryResponse *ftpDirectoryResponse);
 FtpStatus  sfFtpDirectoryResponse_getStatus(sfFtpDirectoryResponse *ftpDirectoryResponse);

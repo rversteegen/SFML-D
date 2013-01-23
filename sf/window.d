@@ -6,10 +6,9 @@ pragma(lib, "csfml-window-2");
 class Context {
     private sfContext* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Context)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfContext* ptr) {
         this.ptr = ptr; 
@@ -30,10 +29,9 @@ class Context {
 class Window {
     sfWindow* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Window)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfWindow* ptr) {
         this.ptr = ptr; 
@@ -94,7 +92,7 @@ class Window {
 		sfWindow_setKeyRepeatEnabled(ptr,enabled); return enabled;
 	}
 	bool  active(bool active) {
-		return sfWindow_setActive(ptr,active); return active;
+		return sfWindow_setActive(ptr,active);
 	}
 	void display() {
 		sfWindow_display(ptr);

@@ -5,10 +5,9 @@ pragma(lib, "csfml-audio-2");
 class Music {
     private sfMusic* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Music)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfMusic* ptr) {
         this.ptr = ptr; 
@@ -101,10 +100,9 @@ class Music {
 class Sound {
     private sfSound* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(Sound)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfSound* ptr) {
         this.ptr = ptr; 
@@ -191,10 +189,9 @@ class Sound {
 class SoundBuffer {
     private sfSoundBuffer* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(SoundBuffer)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfSoundBuffer* ptr) {
         this.ptr = ptr; 
@@ -242,10 +239,9 @@ class SoundBuffer {
 class SoundBufferRecorder {
     private sfSoundBufferRecorder* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(SoundBufferRecorder)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfSoundBufferRecorder* ptr) {
         this.ptr = ptr; 
@@ -275,10 +271,9 @@ class SoundBufferRecorder {
 class SoundRecorder {
     private sfSoundRecorder* ptr;
     private alias ptr this;
-    bool opEquals(Object a) {
+    override bool opEquals(Object a) {
         auto cst = cast(SoundRecorder)a;
         return cst !is null && cst.ptr == ptr;
-        return true;
     }
     private this(sfSoundRecorder* ptr) {
         this.ptr = ptr; 
